@@ -1,5 +1,5 @@
 <?php
- 
+
     function calcularfibonacci($numero){ //funcion con parametro numero ingresado por el ususario
         $serie = [];// array vacio
         if($numero === 0 ) {
@@ -41,10 +41,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
-    <link rel = "stylesheet" href="./estilos.css">
+    <link rel = "stylesheet" href="estilos.css">
 </head>
 <body>
-<div>
     <div>
         <h1>FIBONACCI O  FACTORIAL</h1>
         <form method = "POST">
@@ -52,34 +51,35 @@
             <br> 
             <input type = "number" name= "numero" id = "numero" min = "0" required>
             <br>
-            <label for= "operacion" >Porfavor Ingresa una operacion</label>
+            <label for= "operacion" >Porfavor Ingresa una operacion:</label>
             <select name="operacion" id = "operacion">
             <option value = "FIBONACCI">FIBONACCI</option>
             <option value = "FACTORIAL">FACTORIAL</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Calcular">
+            </select>
+            <br><br>
+            <input type="submit" value="Calcular">
         </form>
     </div>
-</div> 
-<?php
-if ($_POST){
-    $numero = (int)$_POST['numero'];
-    $operacion= $_POST['operacion'];
-    echo "<h1>RESULTADOS</h1>";
+    <div>
+     <?php
+        if ($_POST){
+            $numero = (int)$_POST['numero'];
+            $operacion= $_POST['operacion'];
+            echo "<h1>RESULTADOS</h1>";
 
-    if ($operacion == "FIBONACCI" ){
-        $serie = calcularfibonacci($numero);//se calcula fibonacci respecto al numero ingresado
-        echo "<h2>Terminos solicitados >$numero<  </h2>";//se crea un titulo
-        echo "<p>" . implode(" - ", $serie). "</p>";//implode separa los elementos del array 
-    }elseif ($operacion == "FACTORIAL") {//esto tiene la misma logica
-        $resultado = calcularFactorial($numero);
-        echo "<h2>Factorial del $numero ! </h2>";
-        echo "<p> Proceso:" . implode( " x ", $resultado['proceso']) . "</p>";
-        echo "<p> = {$resultado['resultado'] } </p>";
-    }
-}
-?>
+            if ($operacion == "FIBONACCI" ){    
+                $serie = calcularfibonacci($numero);//se calcula fibonacci respecto al numero ingresado
+                echo "<h2>Terminos solicitados >$numero<  </h2>";//se crea un titulo
+                echo "<p>" . implode(" - ", $serie). "</p>";//implode separa los elementos del array 
+            }elseif ($operacion == "FACTORIAL") {//esto tiene la misma logica
+            $resultado = calcularFactorial($numero);
+            echo "<h2>Factorial del $numero ! </h2>";
+            echo "<p> Proceso:" . implode( " x ", $resultado['proceso']) . "</p>";
+            echo "<p> = {$resultado['resultado'] } </p>";
+            }
+        }
+     ?>
+    </div>              
 </body>
 </html>
 
