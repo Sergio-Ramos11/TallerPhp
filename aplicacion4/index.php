@@ -75,7 +75,7 @@
           if ($_POST){
                 $conjuntoA = convertirEntrada($_POST['conjuntoA']);
                 $conjuntoB = convertirEntrada($_POST['conjuntoB']);
-                echo "<h1>RESULTADOS</h1>";
+                echo "<h1>Resultados</h1>";
                 echo mostrarConjuntosIngresados($conjuntoA, $conjuntoB);
                 echo "<h2>UNION DE CONJUNTOS</h2>";  
                 echo mostrarConjunto(unionConjuntos($conjuntoA,$conjuntoB));   
