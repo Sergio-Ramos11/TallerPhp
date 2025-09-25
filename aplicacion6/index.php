@@ -67,7 +67,7 @@ function mostrarArbolHorizontal($nodo, $nivel = 0) {
     
     mostrarArbolHorizontal($nodo->hijoDerecho, $nivel + 1);
     
-    echo str_repeat("&nbsp;&nbsp;&nbsp;&nbsp;", $nivel);
+    echo str_repeat("           ", $nivel);
     echo $nodo->valor . "<br>";
     
     mostrarArbolHorizontal($nodo->hijoIzquierdo, $nivel + 1);
@@ -96,13 +96,14 @@ function mostrarArbolHorizontal($nodo, $nivel = 0) {
             <br><br>
             <label for = "postorden">Postorden (Separelo con comas)</label>
             <input type= "text" name ="postorden" id= "postorden" placeholder="ej: D,E,B,C,A......">
-            <button type="submit">Construir Árbol</button>
+            <button type="submit">Construir Arbol</button>
         </form>
     </div>
     <br>
-    <div>
+    
         <?php
         if ($_POST) {
+            echo "<div>";
             echo '<h2>Resultados</h2>';
             // Limpiar y procesar los datos de entrada
             $preordenEntrada = !empty($_POST['preorden']) ? 
@@ -122,16 +123,17 @@ function mostrarArbolHorizontal($nodo, $nivel = 0) {
             $metodoConstruccion = "Postorden + Inorden";
             } 
             // Mostrar resultados si el árbol fue construido
+            echo "</div>";
             if ($arbolConstruido) {
-            echo "<h3>Arbol Construido con: " . $metodoConstruccion . "</h3>";
-            // Mostrar representación horizontal del árbol
-            echo '<div>';
-            echo '<div>Estructura del arbol (Visualización Horizontal):</div>';
-            mostrarArbolHorizontal($arbolConstruido);
-            echo '</div>';
+                echo '<br><br>';
+                echo '<div class="arbol_visualizacion">';
+                echo "<h3>Arbol Construido con: " . $metodoConstruccion . "</h3>";
+                echo 'Estructura del árbol (Visualización Horizontal):<br>';
+    
+                mostrarArbolHorizontal($arbolConstruido);
+                echo '</div>';
            }   
         }
         ?>
-    <div>
 </body>
 </html>
