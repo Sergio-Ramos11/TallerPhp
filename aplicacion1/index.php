@@ -3,38 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../aplicacion1/estilo.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+    <title>Acrónimos</title>
 </head>
 
 <body>
     <h1>Generador de Acrónimos</h1>
 
-    <!-- El formulario -->
-    <form action="" method="post">
-        <!-- Campo de entrada: lo que el usuario escribe -->
-        <label for="frase">Escribe una frase:</label>
-        <input type="text" id="frase" name="frase" required>
+    <body>
+        <form action="" method="post">
+            <!-- Campo de entrada: lo que el usuario escribe -->
+            <label for="frase">Escribe una frase:</label>
+            <input type="text" id="frase" name="frase" required>
 
-        <!-- Botón para enviar la frase -->
-        <button type="submit">Convertir</button>
-    </form>
-
+            <!-- Botón para enviar la frase -->
+            <button type="submit">Convertir</button>
+        </form>
+    </body>
     <?php
 
-    $frase = $_POST['frase'];
-    echo "La frase que ingresaste es: " . $frase;
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        $frase = $_POST['frase'];
+        echo "<h2>La frase que ingresaste es: " . $frase . "</h2>";
 
-    $array = preg_split('/[\s-]+/', trim($frase));
-    //echo "<br>" . implode(", ", $array);
-    //implode para pasar de array a string
+        $array = preg_split('/[\s-]+/', trim($frase));
+        //echo "<br>" . implode(", ", $array);
+        //implode para pasar de array a string
 
-    $acronimo = "";
-    foreach($array as $palabra) {
-        $acronimo .= strtoupper($palabra[0]);
+        $acronimo = "";
+        foreach ($array as $palabra) {
+            $acronimo .= strtoupper($palabra[0]);
+        }
+
+        echo "<br><h2>El acrónimo es: " . $acronimo . "</h2>";
     }
-
-    echo "<br>El acrónimo es: " . $acronimo;
 
     ?>
     <br>
